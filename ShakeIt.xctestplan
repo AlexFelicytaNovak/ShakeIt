@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "E02D6DE1-99AE-4E79-9D75-6124313B3507",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "language" : "en",
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ShakeIt.xcodeproj",
+      "identifier" : "6F2A599F29D4D67E006CE451",
+      "name" : "ShakeIt"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ShakeIt.xcodeproj",
+        "identifier" : "6F2A59AF29D4D67F006CE451",
+        "name" : "ShakeItTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ShakeIt.xcodeproj",
+        "identifier" : "6F2A59B929D4D67F006CE451",
+        "name" : "ShakeItUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

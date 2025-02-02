@@ -8,30 +8,55 @@
 import SwiftUI
 
 struct SearchResultsView: View {
+    @State private var recipe: Recipe
     let drink: Cocktail
     var body: some View {
         NavigationLink {
-            CocktailDescription()
+            CocktailDescription(cocktailRecipe: recipe)
         } label: {
             HStack{
-                AsyncImage(url: drink.strDrinkThumb, scale: 2)
-                { image in
-                    image.frame(width: 100, height: 100)
-                        .clipped()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 100, height: 100)
-                            
+                VStack{
+                    if let uiImage = UIImage(data: recipe.photo)
+                    {
+                        Image (uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 90, height: 90)
+                            .clipped()
+                    }
+                    else
+                    {
+                        ProgressView().frame(width: 90, height: 90)
+                            .progressViewStyle(CircularProgressViewStyle(tint: Colors.Color1))
+                    }
+                }.padding(.trailing)
                 
-                Text(drink.strDrink)
+                Text(drink.strDrink).foregroundColor(Colors.Color1)
             }
         }
+        .foregroundColor(Colors.Color1)
+        .task {
+            do {
+                let recipe = try await drink.convert()
+                self.recipe = recipe
+            }
+            catch {
+                
+            }
+        }
+    }
+    
+    init(drink: Cocktail) {
+        self.drink = drink
+        self._recipe = State(initialValue: drink.quickConvert())
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView(drink: Cocktail(idDrink: "1", strDrink: "Sample Drink", strDrinkThumb: URL(string: "https://en.wikipedia.org/wiki/Alcoholic_beverage#/media/File:Common_alcoholic_beverages.jpg")!, ingredient1: nil, ingredient2: nil, ingredient3: nil, ingredient4: nil, ingredient5: nil, ingredient6: nil, ingredient7: nil, ingredient8: nil, ingredient9: nil, ingredient10: nil, ingredient11: nil, ingredient12: nil, ingredient13: nil, ingredient14: nil, ingredient15: nil))
+        SearchResultsView(drink: Cocktail(idDrink: "1", strGlass: "", strInstructions: "",
+                                          strDrink: "Sample Drink", strAlcoholic: "Alcoholic",
+                                          strDrinkThumb: URL(string: "https://en.wikipedia.org/wiki/Alcoholic_beverage#/media/File:Common_alcoholic_beverages.jpg")!))
     }
 }

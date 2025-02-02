@@ -1,0 +1,12 @@
+/* Bundle name */
+"CFBundleName" = "ShakeIt";
+
+/* (No Comment) */
+"Cocktail Recipe" = "Przepis na Koktajl";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "ShakeIt wymaga dostępu do aparatu";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "ShakeIt wymaga dostępu do biblioteki zdjęć";
+
