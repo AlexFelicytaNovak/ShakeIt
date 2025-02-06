@@ -9,6 +9,9 @@ Once a day, the user can randomly draw the "Drink of the Day" by shaking their p
 
 Unit Tests and automated UI testing are performed via the XCTest framework. The application supports Polish 🇵🇱 and English 🇬🇧 languages via localizations. 
 
+## 🏗️ Application Architecture
+This application follows Model-View-ViewModel architecture, where *Models* are the API responses, as well as the favourite cocktails stored in CoreData. *Views* are the SwiftUI views responsible for displaying content, while *ViewModels* hold the current state of the Views and perform actions in response to UI events.
+
 ## 🔨 Installation
 In order to install the application you need a Mac with **Xcode 14 or later** installed.
 
